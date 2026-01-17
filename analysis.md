@@ -7,14 +7,13 @@
 This analysis identifies critical failure modes in the booking agent across 7 transaction traces. 
 The agent demonstrates inconsistent response quality with multiple categories of failures:
 
-**Information retrieval gaps (fare calculations failing unpredictably)
-**Poor error handling (no fallback logic or retry mechanisms)
-**Incomplete state management (missing original fare data, no alternatives offered systematically)
-**User experience gaps (confusing error messages, insufficient context in confirmations)
-**Unverified recovery paths (booking alternate flights without price verification)
+**Information retrieval gaps (fare calculations failing unpredictably)**
+**Poor error handling (no fallback logic or retry mechanisms)**
+**Incomplete state management (missing original fare data, no alternatives offered systematically)**
+**User experience gaps (confusing error messages, insufficient context in confirmations)**
+**Unverified recovery paths (booking alternate flights without price verification)**
 
-**Critical Finding: The agent shows pattern-based inconsistency—identical operations succeed in some traces but fail in others, 
-suggesting underlying service reliability issues that the agent doesn't handle gracefully.
+**Critical Finding: The agent shows pattern-based inconsistency—identical operations succeed in some traces but fail in others,suggesting underlying service reliability issues that the agent doesn't handle gracefully.**
 
 - Manually tested in the browser:  
   - Created single and double‑headed arrows.  
