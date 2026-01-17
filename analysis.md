@@ -61,6 +61,8 @@ Each failure is paired with:
 - Production-ready operational changes
 
 ---
+### Failure Analysis by Trace
+---
 
 ## Trace Log 1 – Flight Change with Fare Calculation Failure
 
