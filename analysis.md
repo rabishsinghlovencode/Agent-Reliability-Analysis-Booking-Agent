@@ -250,7 +250,8 @@ I can estimate each leg separately or proceed with one segment change at a time.
 | Multi-city handling gaps   | No decomposition  | Escalation overload    |
 
 ---
-###System-Level Recommendations
+### System-Level Recommendations
+
 ### 1. Deterministic Core, LLM at the Edges
 
 **Pricing, availability, and booking should be system-driven**
@@ -260,7 +261,7 @@ LLM used for:
  - Clarification
  - Decision summaries
 
-###2. State-Aware Workflow Engine
+### 2. State-Aware Workflow Engine
 
 Explicit states:
 
@@ -285,7 +286,7 @@ Always offer:
  - Alternative
  - Escalation (as last resort)
 ----
-#Conclusion
+# Conclusion
 
 **The primary reliability issues in the agent stem from:**
 
