@@ -192,10 +192,10 @@ This trace should be treated as a **golden path reference** for reliability.
 - Treat LLM as explanation layer, not calculator
 
 #### Global Guardrail
-```text
+
 IF fare_delta == unknown
 → Block booking
-→ Escalate or clarify ```
+→ Escalate or clarify
 
 ### Trace Log 6 – Cancellation Flow (Successful)
 ####Observed Strengths
