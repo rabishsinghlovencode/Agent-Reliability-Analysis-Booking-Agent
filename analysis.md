@@ -193,9 +193,9 @@ This trace should be treated as a **golden path reference** for reliability.
 
 #### Global Guardrail
 
-IF fare_delta == unknown
+"IF fare_delta == unknown
 → Block booking
-→ Escalate or clarify
+→ Escalate or clarify"
 
 ### Trace Log 6 – Cancellation Flow (Successful)
 ####Observed Strengths
@@ -211,8 +211,8 @@ IF fare_delta == unknown
 
 #### Suggested Enhancement
 
-```text
-Your flight is canceled. A refund of $200 has been initiated and should appear within 5–7 business days. Confirmation ID: CXL123.```
+"
+Your flight is canceled. A refund of $200 has been initiated and should appear within 5–7 business days. Confirmation ID: CXL123."
 
 ### Trace Log 7 – Multi-City Fare Calculation Failure
 #### Observed Failures
