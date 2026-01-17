@@ -61,10 +61,10 @@ Each failure is paired with:
 - Production-ready operational changes
 
 ---
-### Failure Analysis by Trace
+## Failure Analysis by Trace
 ---
 
-## Trace Log 1 – Flight Change with Fare Calculation Failure
+### Trace Log 1 – Flight Change with Fare Calculation Failure
 
 ### Observed Failures
 1. Agent failed to calculate fare difference but continued workflow
@@ -173,7 +173,7 @@ This trace should be treated as a **golden path reference** for reliability.
 
 ---
 
-## Trace Log 5 – Repeated Fare Calculation Failure Pattern
+### Trace Log 5 – Repeated Fare Calculation Failure Pattern
 
 ### Observed Failures
 - Fare difference computation failed again
@@ -195,4 +195,105 @@ This trace should be treated as a **golden path reference** for reliability.
 ```text
 IF fare_delta == unknown
 → Block booking
-→ Escalate or clarify
+→ Escalate or clarify ```
+
+### Trace Log 6 – Cancellation Flow (Successful)
+####Observed Strengths
+
+- Clear intent handling
+- Deterministic cancellation
+- Refund communicated clearly
+
+####Improvement Opportunity
+
+- Provide refund timeline
+- Provide confirmation reference
+
+#### Suggested Enhancement
+
+```text
+Your flight is canceled. A refund of $200 has been initiated and should appear within 5–7 business days. Confirmation ID: CXL123.```
+
+### Trace Log 7 – Multi-City Fare Calculation Failure
+#### Observed Failures
+
+- Agent unable to compute combined fare
+- Immediately escalated to support
+- No partial solutions offered
+
+Root Causes:
+- Lack of multi-segment pricing logic
+- No decomposition strategy
+- Over-reliance on single model call
+
+Recommended Improvements
+#### Workflow Decomposition
+
+- 1.Compute fare per segment
+- 2. Compare segment deltas individually
+- 3. Aggregate or present estimates
+
+Improved Fallback Strategy
+
+####Instead of:
+“Cannot compute combined fare—please contact support.”
+Use:
+
+“I can estimate each leg separately or proceed with one segment change at a time. How would you like to continue?”
+
+---
+ #### Summary of Key Failure Modes
+| Failure Mode               | Root Cause        | Impact                 |
+| -------------------------- | ----------------- | ---------------------- |
+| Fare calculation failure   | LLM over-reliance | Incorrect booking flow |
+| Missing confirmation gates | Workflow gaps     | User confusion         |
+| No fallback paths          | Narrow prompts    | Premature termination  |
+| Silent errors              | Poor messaging    | Loss of trust          |
+| Multi-city handling gaps   | No decomposition  | Escalation overload    |
+--
+System-Level Recommendations
+###1. Deterministic Core, LLM at the Edges
+
+**Pricing, availability, and booking should be system-driven**
+
+LLM used for:
+ - Explanation
+ - Clarification
+ - Decision summaries
+
+###2. State-Aware Workflow Engine
+
+Explicit states:
+
+ - FARE_CONFIRMED
+ - PAYMENT_CONFIRMED
+ - BOOKING_READY
+- Prevent illegal transitions
+
+###3. Structured Prompt Contracts
+
+**Require machine-readable outputs:**
+{
+  "status": "SUCCESS | FAILURE",
+  "reason": "...",
+  "next_actions": []
+}
+
+###4. User-Centered Failure Recovery
+
+Always offer:
+ - Retry
+ - Alternative
+ - Escalation (as last resort)
+----
+#Conclusion
+
+**The primary reliability issues in the agent stem from:**
+
+ - Over-trusting LLMs for transactional logic
+
+ - Missing workflow guardrails
+
+ - Insufficient fallback strategies
+
+###By introducing deterministic checks, structured prompts, and user-centric recovery paths, the agent can be transformed into a production-grade, resilient booking assistant.
