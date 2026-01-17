@@ -211,8 +211,7 @@ This trace should be treated as a **golden path reference** for reliability.
 
 #### Suggested Enhancement
 
-"
-Your flight is canceled. A refund of $200 has been initiated and should appear within 5–7 business days. Confirmation ID: CXL123."
+"Your flight is canceled. A refund of $200 has been initiated and should appear within 5–7 business days. Confirmation ID: CXL123."
 
 ### Trace Log 7 – Multi-City Fare Calculation Failure
 #### Observed Failures
@@ -226,20 +225,19 @@ Root Causes:
 - No decomposition strategy
 - Over-reliance on single model call
 
-Recommended Improvements
+### Recommended Improvements
 #### Workflow Decomposition
 
-- 1.Compute fare per segment
-- 2. Compare segment deltas individually
-- 3. Aggregate or present estimates
+1.Compute fare per segment
+2. Compare segment deltas individually
+3. Aggregate or present estimates
 
-Improved Fallback Strategy
+###Improved Fallback Strategy
 
 ####Instead of:
 “Cannot compute combined fare—please contact support.”
-Use:
-
-“I can estimate each leg separately or proceed with one segment change at a time. How would you like to continue?”
+####Use:
+I can estimate each leg separately or proceed with one segment change at a time. How would you like to continue?
 
 ---
  #### Summary of Key Failure Modes
@@ -250,9 +248,10 @@ Use:
 | No fallback paths          | Narrow prompts    | Premature termination  |
 | Silent errors              | Poor messaging    | Loss of trust          |
 | Multi-city handling gaps   | No decomposition  | Escalation overload    |
---
-System-Level Recommendations
-###1. Deterministic Core, LLM at the Edges
+
+---
+###System-Level Recommendations
+### 1. Deterministic Core, LLM at the Edges
 
 **Pricing, availability, and booking should be system-driven**
 
@@ -270,7 +269,7 @@ Explicit states:
  - BOOKING_READY
 - Prevent illegal transitions
 
-###3. Structured Prompt Contracts
+### 3. Structured Prompt Contracts
 
 **Require machine-readable outputs:**
 {
@@ -279,7 +278,7 @@ Explicit states:
   "next_actions": []
 }
 
-###4. User-Centered Failure Recovery
+### 4. User-Centered Failure Recovery
 
 Always offer:
  - Retry
@@ -296,4 +295,4 @@ Always offer:
 
  - Insufficient fallback strategies
 
-###By introducing deterministic checks, structured prompts, and user-centric recovery paths, the agent can be transformed into a production-grade, resilient booking assistant.
+### By introducing deterministic checks, structured prompts, and user-centric recovery paths, the agent can be transformed into a production-grade, resilient booking assistant.
